@@ -75,4 +75,18 @@
     background-color: #337ab7 !important;
     border-color: #337ab7 !important;
     color: #fff !important;
+    
+}
+.pagination > li > a,
+.pagination > li > span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 36px;   /* 두 자리도 들어가게 */
+  height: 36px;
+
+  padding: 0 10px;   /* 좌우 여유 */
+  border-radius: 999px; /* 완전 동그라미(캡슐) */
+  line-height: 1;    /* 줄높이로 뭉개지는거 방지 */
 }

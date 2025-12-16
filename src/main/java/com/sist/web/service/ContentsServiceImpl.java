@@ -23,5 +23,15 @@ public class ContentsServiceImpl implements ContentsService {
 		// TODO Auto-generated method stub
 		return mapper.contentsTotalPage();
 	}
+	@Override
+	public List<ContentsVO> contentsRecent3() {
+		// TODO Auto-generated method stub
+		return mapper.contentsRecent3();
+	}
+	@Override
+	public List<ContentsVO> contentsTop10() {
+		// TODO Auto-generated method stub
+		return mapper.contentsTop10();
+	}
 
 }

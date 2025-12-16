@@ -8,4 +8,6 @@ public interface ContentsService {
 	
 	public List<ContentsVO> contentsListData(int start);
 	public int contentsTotalPage();
+	public List<ContentsVO> contentsRecent3();
+	public List<ContentsVO> contentsTop10();
 }

@@ -6,6 +6,13 @@
 <link rel="stylesheet" th:href="@{/assets/css/card.css}">
 </head>
 <body>
+  <section class="wrapper style2">
+		<div class="container">
+			<header class="major">
+				<h2>컨텐츠 목록</h2>
+			</header>
+		</div>
+	</section>
   <div id="main-wrapper">
 	<div class="container">
 		<div class="row">
@@ -15,7 +22,8 @@
 			        <img th:src="${vo.b_thumbnail}" 
 			         style="width:240px;height: 270px">
 			        <div class="caption">
-			          <p>[[${vo.b_title}]]</p>
+			          <span style="margin-top:5px">[[${vo.b_filter}]]</span>
+			          <p style="margin-top:5px">[[${vo.b_title}]]</p>
 			        </div>
 			      </a>
 			 </div>				
@@ -32,6 +40,7 @@
 		  </ul>
 		</div>
 	</div>
+  </div>
   </div>
 </body>
 </html>
