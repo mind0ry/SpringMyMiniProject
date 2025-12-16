@@ -231,6 +231,13 @@ input, select, textarea {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+#footer {
+    background-color: #fff;
+    background-image: url(images/bg02.png), url(images/bg03.png), url(images/bg01.png);
+    background-position: top left, bottom left, top left;
+    background-size: 100% 6em, 100% 6em, auto;
+    background-repeat: no-repeat, no-repeat, repeat;
+}
 		@media screen and (max-width: 1680px) {
 
 			.container {
