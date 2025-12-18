@@ -231,6 +231,44 @@ input, select, textarea {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+#nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+/* 메뉴 */
+.nav-menu {
+    display: flex;
+    gap: 20px;
+}
+
+/* 로그인 전체 영역 */
+.nav-login {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: center;
+    
+}
+
+/* ID / PW 묶음 */
+.login-form {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-left: 15px;
+}
+
+/* 버튼은 항상 맨 오른쪽 */
+.login-btn {
+    margin-left: auto;
+}
+label {
+	margin-bottom: 0 !important;
+	color: white !important;
+}
 #footer {
     background-color: #fff;
     background-image: url(images/bg02.png), url(images/bg03.png), url(images/bg01.png);
