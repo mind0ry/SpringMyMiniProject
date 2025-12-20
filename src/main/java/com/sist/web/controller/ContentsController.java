@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.sist.web.service.ContentsService;
 import com.sist.web.vo.ContentsVO;
 
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 
 @Controller
@@ -32,8 +33,8 @@ public class ContentsController {
 		int startPage=((curpage-1)/BLOCK*BLOCK)+1;
 		int endPage=((curpage-1)/BLOCK*BLOCK)+BLOCK;
 		
-		if(curpage>totalpage)
-			curpage=totalpage;
+		if(endPage>totalpage)
+			endPage=totalpage;
 		
 		model.addAttribute("list", list);
 		model.addAttribute("curpage", curpage);
@@ -43,6 +44,22 @@ public class ContentsController {
 		
 		model.addAttribute("main_html", "contents/list");
 		
+		return "main/main";
+	}
+	
+	@GetMapping("/contents/detail")
+	public String contents_detail(@RequestParam("b_id") String b_id, Model model) {
+		
+		ContentsVO vo=cService.contentsDetailData(b_id);
+		int u_s_id=Integer.parseInt(vo.getU_s_id());
+		ContentsVO svo=cService.getSellerInfo(u_s_id);
+		List<ContentsVO> list=cService.getDetailImg(b_id);
+		
+		
+		model.addAttribute("vo", vo);
+		model.addAttribute("svo", svo);
+		model.addAttribute("list", list);
+		model.addAttribute("main_html", "contents/detail");
 		return "main/main";
 	}
 }

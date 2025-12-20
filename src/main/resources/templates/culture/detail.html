@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="referrer" content="no-referrer">
+<title>Insert title here</title>
+</head>
+<body>
+<section class="wrapper style2">
+		<div class="container">
+			<header class="major">
+				<h2> 문화 상세보기
+				</h2>
+			</header>
+		</div>
+	</section>
+   <div id="main-wrapper" style="margin-top: 130px">
+   <div class="container">
+      <div class="row aln-center">
+        <table class="table">
+          <tr>
+            <td class="text-center" rowspan="9" width=30%>
+             <img th:src="${vo.main_img}" style="width:300px;height: 350px"> 
+            </td>
+            <td colspan="2">
+             <h3>[[${vo.name}]]</h3>
+            </td> 
+          </tr>
+          <tr>
+            <th width=10%>종류</th>
+            <td width="60%" class="aln-left">[[${vo.m_cate}]]</td>
+          </tr>
+          
+          <tr>
+            <th width=10%>회사</th>
+            <td width="60%" class="aln-left">[[${vo.com_name}]]</td>
+          </tr>
+          
+          <tr>
+            <th width=10%>시간</th>
+            <td width="60%" class="aln-left">[[${vo.runtime}]]</td>
+          </tr>
+          
+          <tr>
+            <th width=10%>전화 번호</th>
+            <td width="60%" class="aln-left">[[${vo.phone}]]</td>
+          </tr>
+          
+          <tr>
+            <th width=10%>주차</th>
+            <td width="60%" class="aln-left">[[${vo.parking}]]</td>
+          </tr>
+          
+          <tr>
+            <th width=10%>주소</th>
+            <td width="60%" class="aln-left">[[${vo.address}]]></td>
+          </tr>
+          
+          <tr>
+            <th width=10%>나이 제한</th>
+            <td width="60%" class="aln-left">[[${vo.age}]]</td>
+          </tr>
+         
+        </table>
+        <table class="table">
+          <tr>
+           <td class="text-right">
+            <a href="#" class="btn btn-xs btn-primary">찜하기</a>
+            <a href="#" class="btn btn-xs btn-info">예약하기</a>
+            <a href="javascript:history.back()" class="btn btn-xs btn-warning">목록</a>
+           </td>
+          </tr>
+          <tr>
+		     <td>
+		       <div id="map" style="width:100%;height:350px;"></div>
+		     </td>
+		   </tr>
+        </table>
+        <div style="width: 100%; padding: 0;">
+          <hr>
+          <h3 style="margin:20px 0 0 20px">주변 맛집</h3>
+        </div>
+         <div class="col-sm-2" th:each="fvo:${fList}" style="margin-bottom: 80px">
+			    <div class="thumbnail">
+			      <a th:href="@{/food/detail(fno=${fvo.fno})}">
+			        <img th:src="${fvo.poster}" 
+			         style="width:150px;height: 160px">
+			        <div class="caption">
+			          <span style="margin-top:5px; font-size: 10px">[[${fvo.address}]]</span>
+			          <p style="margin-top:5px">[[${fvo.name}]]</p>
+			        </div>
+			      </a>
+			 </div>		
+       </div>
+        
+   </div>
+   <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=500f9263086d9dabb5676152c0e94936&libraries=services"></script>			
+   </div>
+   
+  <script>
+	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+	    mapOption = {
+	        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+	        level: 3 // 지도의 확대 레벨
+	    };  
+	
+	// 지도를 생성합니다    
+	var map = new kakao.maps.Map(mapContainer, mapOption); 
+	
+	// 주소-좌표 변환 객체를 생성합니다
+	var geocoder = new kakao.maps.services.Geocoder();
+	
+	// 주소로 좌표를 검색합니다  서울시 종로구 북악산로 267 [[${vo.address}]]
+	geocoder.addressSearch('[[${vo.address}]]', function(result, status) {
+	
+	    // 정상적으로 검색이 완료됐으면 
+	     if (status === kakao.maps.services.Status.OK) {
+	
+	        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+	
+	        // 결과값으로 받은 위치를 마커로 표시합니다
+	        var marker = new kakao.maps.Marker({
+	            map: map,
+	            position: coords
+	        });
+	
+	        // 인포윈도우로 장소에 대한 설명을 표시합니다
+	        var infowindow = new kakao.maps.InfoWindow({
+	            content: '<div style="width:150px;text-align:center;padding:6px 0;">[[${vo.name}]]</div>'
+	        });
+	        infowindow.open(map, marker);
+	
+	        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+	        map.setCenter(coords);
+	    } 
+	    
+	});    
+	</script>
+</body>
+</html>

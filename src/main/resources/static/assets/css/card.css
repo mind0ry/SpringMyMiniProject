@@ -38,7 +38,16 @@
     margin: 0;
     font-weight: bold;
     color: #333;
-    font-size: 14px;
+    font-size: 16px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.thumbnail .caption span {
+    margin: 0;
+    color: #333;
+    font-size: 12px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -55,25 +64,27 @@
     margin: 0;
 }
 */
-
+.pagination {
+	display: inline-block;
+}
 .pagination > li > a {
     color: #555 !important;
     border-radius: 50% !important;
     margin: 0 3px !important;
-    border: 1px solid #ddd !important;
     transition: all 0.2s !important;
+    border: none;
 }
 
 .pagination > li > a:hover {
-    background-color: #337ab7 !important;
+    background-color: black !important;
     color: #fff !important;
-    border-color: #337ab7 !important;
+    border-color: black !important;
 }
 
 .pagination > .active > a,
 .pagination > .active > a:hover {
-    background-color: #337ab7 !important;
-    border-color: #337ab7 !important;
+    background-color: black !important;
+    border-color: black !important;
     color: #fff !important;
     
 }
@@ -83,8 +94,8 @@
   align-items: center;
   justify-content: center;
 
-  min-width: 36px;   /* 두 자리도 들어가게 */
-  height: 36px;
+  min-width: 32px;   /* 두 자리도 들어가게 */
+  height: 32px;
 
   padding: 0 10px;   /* 좌우 여유 */
   border-radius: 999px; /* 완전 동그라미(캡슐) */

@@ -12,7 +12,7 @@ public class MemberServiceImpl implements MemberService{
    private final MemberMapper mapper;
 
    @Override
-   public MemberVO memberLoign(String id, String pwd) {
+   public MemberVO memberLogin(String id, String pwd) {
 	  // TODO Auto-generated method stub
 	  MemberVO vo=new MemberVO();
 	  int count=mapper.memberIdCount(id);

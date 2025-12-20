@@ -9,7 +9,7 @@
   <section class="wrapper style2">
 		<div class="container">
 			<header class="major">
-				<h2>컨텐츠 목록</h2>
+				<h2>맛집 목록</h2>
 			</header>
 		</div>
 	</section>
@@ -18,12 +18,12 @@
 		<div class="row">
 			<div class="col-sm-3" th:each="vo:${list}">
 			    <div class="thumbnail">
-			      <a th:href="@{/contents/detail(b_id=${vo.b_id})}">
-			        <img th:src="${vo.b_thumbnail}" 
+			      <a th:href="@{/food/detail(fno=${vo.fno})}">
+			        <img th:src="${vo.poster}" 
 			         style="width:240px;height: 270px">
 			        <div class="caption">
-			          <span style="margin-top:5px">[[${vo.b_filter}]]</span>
-			          <p style="margin-top:5px">[[${vo.b_title}]]</p>
+			          <span style="margin-top:5px">[[${vo.type}]]</span>
+			          <p style="margin-top:5px">[[${vo.name}]]</p>
 			        </div>
 			      </a>
 			 </div>				
@@ -31,16 +31,17 @@
 		<div class="row" style="margin-bottom: 50px">
 		  <ul class="pagination text-center">
 		    <li th:if="${startPage>1}">
-		      <a th:href="@{/contents/list(page=${startPage-1})}">&laquo;</a></li>
+		      <a th:href="@{/food/list(page=${startPage-1})}">&laquo;</a></li>
 		    <li th:each="i:${#numbers.sequence(startPage,endPage)}"
 		     th:class="${curpage==i?'active':''}"
-		    ><a th:href="@{/contents/list(page=${i})}">[[${i}]]</a></li>
+		    ><a th:href="@{/food/list(page=${i})}">[[${i}]]</a></li>
 		    <li th:if="${endPage<totalpage}">
-		      <a th:href="@{/contents/list(page=${endPage+1})}">&raquo;</a></li>
+		      <a th:href="@{/food/list(page=${endPage+1})}">&raquo;</a></li>
 		  </ul>
 		</div>
 	</div>
   </div>
   </div>
+  
 </body>
 </html>

@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
+import com.sist.web.vo.BoardVO;
 import com.sist.web.vo.ContentsVO;
 
 @Mapper
@@ -36,4 +37,18 @@ public interface ContentsMapper {
 			+ "ORDER BY b_view_count DESC "
 			+ "OFFSET 0 ROWS FETCH NEXT 10 ROWS ONLY")
 	public List<ContentsVO> contentsTop10();
+	
+	@Select("SELECT * FROM board "
+			+ "WHERE b_id=#{b_id}")
+	public ContentsVO contentsDetailData(String b_id);
+	
+	@Select("SELECT u_s_com, u_s_zone, u_s_carrer ,u_s_profileimg_url "
+			+ "FROM users_seller "
+			+ "WHERE u_s_id=#{u_s_id}")
+	public ContentsVO getSellerInfo(int u_s_id);
+	
+	@Select("SELECT b_img_url, rownum FROM board_image "
+			+ "WHERE b_id=#{b_id} AND rownum <= 4 "
+			+ "ORDER BY b_img_id ASC")
+	public List<ContentsVO>  getDetailImg(String b_id);
 }

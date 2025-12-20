@@ -17,6 +17,7 @@ import com.sist.web.entity.BoardEntity;
 import com.sist.web.vo.BoardUpdateVO;
 import com.sist.web.vo.BoardVO;
 
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 
 @Controller
@@ -61,13 +62,22 @@ public class BoardController {
 	}
 	
 	@GetMapping("/board/detail")
-	public String board_detail(@RequestParam("no") int no, Model model) {
+	public String board_detail(@RequestParam("no") int no, Model model, HttpSession session) {
+		
+		String id=(String)session.getAttribute("id");
 		BoardEntity vo=bDao.findByNo(no);
 		
 		vo.setHit(vo.getHit()+1);
 		bDao.save(vo);
 		
 		vo=bDao.findByNo(no);
+		
+		if(id==null) {
+    		model.addAttribute("sessionId", "");
+    	} else {
+    		model.addAttribute("sessionId", id);
+    	}
+		
 		model.addAttribute("vo", vo);
 		model.addAttribute("main_html", "board/detail");
 		return "main/main";

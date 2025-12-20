@@ -5,45 +5,85 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div id="main-wrapper">
-  <h3 class="text-center" style="margin-bottom: 80px">내용보기</h3>
-	<div class="container">
-	
-		<div class="row aln-center">
-		  <table class="table">
-		    <tbody>
-		      <tr>
-		        <th class="success text-center" width=20%>번호</th>
-		        <td class="text-center" width=30%>[[${vo.no}]]</td>
-		        <th class="success text-center" width=20%>작성일</th>
-		        <td class="text-center" width=30%>[[${vo.regdate}]]</td>
-		      </tr>
-		      <tr>
-		        <th class="success text-center" width=20%>이름</th>
-		        <td class="text-center" width=30%>[[${vo.name}]]</td>
-		        <th class="success text-center" width=20%>조회수</th>
-		        <td class="text-center" width=30%>[[${vo.hit}]]</td>
-		      </tr>
-		      <tr>
-		        <th class="success text-center" width=20%>제목</th>
-		        <td class="text-left" colspan="3">[[${vo.subject}]]</td>
-		      </tr>
-		      <tr>
-		        <td class="aln-left" valign="top" height="200" colspan="4">
-		         <pre style="white-space: pre-wrap; background-color: white; border: none">[[${vo.content}]]</pre>
-		        </td>
-		      </tr>
-		      <tr>
-		        <td colspan="4" class="text-right">
-		          <a th:href="@{/board/update(no=${vo.no})}" class="btn btn-xs btn-warning">수정</a>
-		          <a th:href="@{/board/delete(no=${vo.no})}" class="btn btn-xs btn-info">삭제</a>
-		          <a href="/board/list" class="btn btn-xs btn-success">목록</a>
-		        </td>
-		      </tr>
-		    </tbody>
-		  </table>
+<section class="wrapper style2">
+		<div class="container">
+			<header class="major">
+				<h2>맛집 상세보기
+				</h2>
+			</header>
 		</div>
-<!-- 댓글 -->
+	</section>
+   <div id="main-wrapper" style="margin-top: 130px">
+   <div class="container">
+      <div class="row aln-center">
+        <table class="table">
+          <tr>
+            <td class="text-center" rowspan="9" width=30%>
+             <img th:src="${vo.poster}" style="width:300px;height: 250px"> 
+            </td>
+            <td colspan="2">
+             <h3>[[${vo.name}]]&nbsp;<span style="color: orange;">[[${vo.score}]]</span></h3>
+            </td> 
+          </tr>
+          <tr>
+            <th width=10%>주소</th>
+            <td width="60%" class="aln-left">[[${vo.address}]]</td>
+          </tr>
+          
+          <tr>
+            <th width=10%>전화</th>
+            <td width="60%" class="aln-left">[[${vo.phone}]]</td>
+          </tr>
+          
+          <tr>
+            <th width=10%>음식종류</th>
+            <td width="60%" class="aln-left">[[${vo.type}]]</td>
+          </tr>
+          
+          <tr>
+            <th width=10%>가격대</th>
+            <td width="60%" class="aln-left">[[${vo.price}]]</td>
+          </tr>
+          
+          <tr>
+            <th width=10%>주차</th>
+            <td width="60%" class="aln-left">[[${vo.parking}]]</td>
+          </tr>
+          
+          <tr>
+            <th width=10%>영업시간</th>
+            <td width="60%" class="aln-left">[[${vo.time}]]></td>
+          </tr>
+          
+          <tr>
+            <th width=10%>테마</th>
+            <td width="60%" class="aln-left">[[${vo.theme}]]</td>
+          </tr>
+          <tr>
+           <th width=10%>좋아요</th>
+           <td width="60%" class="aln-left">
+           
+          <img src="/images/likeon.png" style="width: 20px;height: 20px;display: inline-block;">
+          ([[${vo.hit}]])
+           </td>
+          </tr>
+        </table>
+        <table class="table">
+          <tr>
+           <td>
+            [[${vo.content}]]
+           </td>
+          </tr>
+          <tr>
+           <td class="text-right">
+            <a href="#" class="btn btn-xs btn-primary">찜하기</a>
+            <a href="#" class="btn btn-xs btn-info">예약하기</a>
+            <a href="javascript:history.back()" class="btn btn-xs btn-warning">목록</a>
+           </td>
+          </tr>
+        </table>
+      </div>
+    <!-- 댓글 -->
     <div class="row aln-text" style="margin-top: 10px; width: 800px">
       <table class="table">
          <tr>
@@ -98,10 +138,10 @@
        data(){
           return {
              list:[],
-             cno:'[[${vo.no}]]',
+             cno:'[[${vo.fno}]]',
              sessionId:'[[${sessionId}]]',
              msg:'',
-             type:101,
+             type:100,
              up:false
           }
        },

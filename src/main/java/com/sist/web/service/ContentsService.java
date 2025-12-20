@@ -10,4 +10,7 @@ public interface ContentsService {
 	public int contentsTotalPage();
 	public List<ContentsVO> contentsRecent3();
 	public List<ContentsVO> contentsTop10();
+	public ContentsVO contentsDetailData(String b_id);
+	public ContentsVO getSellerInfo(int u_s_id);
+	public List<ContentsVO> getDetailImg(String b_id);
 }

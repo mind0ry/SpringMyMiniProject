@@ -3,5 +3,5 @@ package com.sist.web.service;
 import com.sist.web.vo.MemberVO;
 
 public interface MemberService {
-	public MemberVO memberLoign(String id,String pwd);
+	public MemberVO memberLogin(String id,String pwd);
 }

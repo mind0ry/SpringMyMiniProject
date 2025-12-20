@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.sist.web.mapper.ContentsMapper;
+import com.sist.web.vo.BoardVO;
 import com.sist.web.vo.ContentsVO;
 
 import lombok.RequiredArgsConstructor;
@@ -32,6 +33,21 @@ public class ContentsServiceImpl implements ContentsService {
 	public List<ContentsVO> contentsTop10() {
 		// TODO Auto-generated method stub
 		return mapper.contentsTop10();
+	}
+	@Override
+	public ContentsVO contentsDetailData(String b_id) {
+		// TODO Auto-generated method stub
+		return mapper.contentsDetailData(b_id);
+	}
+	@Override
+	public ContentsVO getSellerInfo(int u_s_id) {
+		// TODO Auto-generated method stub
+		return mapper.getSellerInfo(u_s_id);
+	}
+	@Override
+	public List<ContentsVO> getDetailImg(String b_id) {
+		// TODO Auto-generated method stub
+		return mapper.getDetailImg(b_id);
 	}
 
 }
