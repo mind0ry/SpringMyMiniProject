@@ -36,4 +36,10 @@ public interface FoodMapper {
    @Select("SELECT * FROM food "
 		  +"WHERE fno=#{fno}")
    public FoodVO foodDetailData(int fno);
+   
+   @Select("SELECT fno,name,poster,type,address,rownum "
+			  +"FROM food "
+			  +"WHERE REGEXP_LIKE(address,#{address}) "
+			  +"AND rownum<=4")
+	public List<FoodVO> myNearFoodHouse(String address);
 }

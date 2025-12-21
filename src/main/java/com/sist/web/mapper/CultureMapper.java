@@ -50,9 +50,16 @@ public interface CultureMapper {
 			+ "WHERE no=#{no}")
 	public CultureVO cultureDetailData(int no);
 	
+	@Select("SELECT no, name, m_cate, main_img, address, rownum "
+			+ "FROM time_ticket "
+			+ "WHERE rownum <= 4 "
+			+ "ORDER BY no ASC")
+	public List<CultureVO> cultureMain();
+	
 	@Select("SELECT fno,name,poster,address,rownum "
 			  +"FROM food "
 			  +"WHERE REGEXP_LIKE(address,#{address}) "
 			  +"AND rownum<=6")
 	public List<FoodVO> seoulNearFoodHouse(String address);
+	
 }

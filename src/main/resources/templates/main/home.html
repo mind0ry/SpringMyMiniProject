@@ -4,8 +4,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-
-
+a {
+	text-decoration: none;
+	color: black;
+}
 </style>
 </head>
 <body>
@@ -22,10 +24,11 @@
 	<!-- Highlights -->
 	<section class="wrapper style1">
   <div class="container">
-    <h3 class="section-title">최신 컨텐츠</h3>
+    <h3 class="section-title" style="height: 35px">최신 컨텐츠</h3>
 
     <div class="row gtr-50"> <!-- 간격 줄임 -->
       <section class="col-3" th:each="vo:${rList}">
+       <a th:href="@{/contents/detail(b_id=${vo.b_id})}">
         <div class="content-item">
           <img th:src="${vo.b_thumbnail}" class="content-thumb" style="width: 100%">
 
@@ -34,64 +37,46 @@
             <p class="content-title">[[${vo.b_title}]]</p>
           </div>
         </div>
+       </a>
       </section>
     </div>
   </div>
 </section>
-
-	
-
-	<!-- Posts -->
+<!-- 맛집 -->
 	<section class="wrapper style1">
 		<div class="container">
+		  <div style="height: 90px">
+		    <h3 class="section-title" th:if="${sessionAddr==''}">서울 맛집</h3>
+		    <h3 class="section-title" th:if="${sessionAddr!=''}">내 주변 맛집</h3>
+		  </div>
 			<div class="row">
-				<section class="col-6 col-12-narrower">
+				<section class="col-6 col-12-narrower" style="padding: 0 0 0 15px" th:each="fvo:${mfList}">
 					<div class="box post">
-						<a href="#" class="image left"><img src="/images/pic01.jpg"
-							alt="" /></a>
-						<div class="inner">
-							<h3>The First Thing</h3>
-							<p>Duis neque nisi, dapibus sed mattis et quis, nibh. Sed et
-								dapibus nisl amet mattis, sed a rutrum accumsan sed. Suspendisse
-								eu.</p>
-						</div>
-					</div>
-				</section>
-				<section class="col-6 col-12-narrower">
-					<div class="box post">
-						<a href="#" class="image left"><img src="/images/pic02.jpg"
-							alt="" /></a>
-						<div class="inner">
-							<h3>The Second Thing</h3>
-							<p>Duis neque nisi, dapibus sed mattis et quis, nibh. Sed et
-								dapibus nisl amet mattis, sed a rutrum accumsan sed. Suspendisse
-								eu.</p>
+						<a th:href="@{/food/detail(fno=${fvo.fno})}" class="image left"><img th:src="${fvo.poster}" width="170" height="120"></a>
+						<div class="inner" style="padding-top: 5px">
+							<h3>[[${fvo.name}]]</h3>
+							<p>[[${fvo.type}]]</p>
+							<p style="font-size: 10px">[[${fvo.address}]]</p>
 						</div>
 					</div>
 				</section>
 			</div>
+		</div>
+	</section>
+	<!-- 문화 생활 -->
+	<section class="wrapper style1" style="padding-top:20px">
+		<div class="container">
+		  <div style="margin-bottom: 60px">
+		    <h3 class="section-title">문화 생활</h3>
+		  </div>
 			<div class="row">
-				<section class="col-6 col-12-narrower">
+				<section class="col-6 col-12-narrower" style="padding: 0 0 0 15px" th:each="cvo:${cList}">
 					<div class="box post">
-						<a href="#" class="image left"><img src="/images/pic03.jpg"
-							alt="" /></a>
-						<div class="inner">
-							<h3>The Third Thing</h3>
-							<p>Duis neque nisi, dapibus sed mattis et quis, nibh. Sed et
-								dapibus nisl amet mattis, sed a rutrum accumsan sed. Suspendisse
-								eu.</p>
-						</div>
-					</div>
-				</section>
-				<section class="col-6 col-12-narrower">
-					<div class="box post">
-						<a href="#" class="image left"><img src="images/pic04.jpg"
-							alt="" /></a>
-						<div class="inner">
-							<h3>The Fourth Thing</h3>
-							<p>Duis neque nisi, dapibus sed mattis et quis, nibh. Sed et
-								dapibus nisl amet mattis, sed a rutrum accumsan sed. Suspendisse
-								eu.</p>
+						<a th:href="@{/culture/detail(no=${cvo.no})}" class="image left"><img th:src="${cvo.main_img}" width="170" height="120"></a>
+						<div class="inner" style="padding-top: 5px">
+							<h3>[[${cvo.name}]]</h3>
+							<p>[[${cvo.m_cate}]]</p>
+							<p style="font-size: 10px">[[${cvo.address}]]</p>
 						</div>
 					</div>
 				</section>

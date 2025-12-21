@@ -15,4 +15,5 @@ public interface CultureService {
 	public int culture3TotalPage();
 	public CultureVO cultureDetailData(int no);
 	public List<FoodVO> seoulNearFoodHouse(String address);
+	public List<CultureVO> cultureMain();
 }

@@ -35,4 +35,10 @@ public class FoodServiceImpl implements FoodService{
 	   mapper.foodHitIncrement(fno);
 	   return mapper.foodDetailData(fno);
    }
+
+   @Override
+   public List<FoodVO> myNearFoodHouse(String address) {
+	// TODO Auto-generated method stub
+	return mapper.myNearFoodHouse(address);
+   }
 }

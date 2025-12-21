@@ -21,13 +21,13 @@
 				<section class="col-3 col-6-narrower col-12-mobilep">
 					<h3>인기 컨텐츠 Top10</h3>
 					<ul class="links">
-						<li th:each="vo:${tList}"><a href="#">[[${vo.b_title}]]</a></li>
+						<li th:each="vo:${tList}"><a th:href="@{/contents/detail(b_id=${vo.b_id})}">[[${vo.b_title}]]</a></li>
 					</ul>
 				</section>
 				<section class="col-3 col-6-narrower col-12-mobilep">
 					<h3>맛집 Top10</h3>
 					<ul class="links">
-						<li th:each="vo:${fList}"><a href="#">[[${vo.name}]]</a></li>
+						<li th:each="vo:${fList}"><a th:href="@{/food/detail(fno=${vo.fno})}">[[${vo.name}]]</a></li>
 					</ul>
 				</section>
 				<section class="col-6 col-12-narrower">

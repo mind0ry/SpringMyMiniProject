@@ -35,7 +35,7 @@
             <input type="password" ref=pwd class="input-sm" size="15" v-model="pwd">
         </div>
 		&nbsp;
-        <button type="button" class="btn-primary btn-sm login-btn" @click="login()" style="margin-right: 20px">
+        <button type="button" class="btn-primary btn-sm login-btn" @click="login()" style="margin-right: 20px; background-color: gray">
             로그인
         </button>
     </div>
@@ -44,7 +44,7 @@
     <div class="nav-login" th:if="${session.id!=null}">
         <span style="color: white">[[${session.name}]]님</span>
         &nbsp;
-        <button type="button" class="btn-primary btn-sm" @click="logout()" style="margin-right: 20px">로그아웃</button>
+        <button type="button" class="btn-primary btn-sm" @click="logout()" style="margin-right: 20px; background-color: gray">로그아웃</button>
     </div>
 </nav>
 	

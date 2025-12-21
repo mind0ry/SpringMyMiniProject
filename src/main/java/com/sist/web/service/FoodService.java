@@ -9,4 +9,5 @@ public interface FoodService {
 	public int foodTotalPage();
 	public List<FoodVO> foodTop10();
 	public FoodVO foodDetailData(int fno);
+	public List<FoodVO> myNearFoodHouse(String address);
 }

@@ -64,4 +64,10 @@ public class CultureServiceImpl implements CultureService {
 		return mapper.seoulNearFoodHouse(address);
 	}
 
+	@Override
+	public List<CultureVO> cultureMain() {
+		// TODO Auto-generated method stub
+		return mapper.cultureMain();
+	}
+
 }

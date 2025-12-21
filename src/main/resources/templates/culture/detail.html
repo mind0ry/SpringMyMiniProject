@@ -4,6 +4,18 @@
 <meta charset="UTF-8">
 <meta name="referrer" content="no-referrer">
 <title>Insert title here</title>
+<style type="text/css">
+span {
+    display: inline-block; 
+  	max-width: 100px; 
+    margin: 0;
+    color: #333;
+    font-size: 12px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+</style>
 </head>
 <body>
 <section class="wrapper style2">
@@ -86,11 +98,12 @@
 			        <img th:src="${fvo.poster}" 
 			         style="width:150px;height: 160px">
 			        <div class="caption">
-			          <span style="margin-top:5px; font-size: 10px">[[${fvo.address}]]</span>
+			          <span style="margin-top:5px; font-size: 10px; text-overflow: ellipsis;">[[${fvo.address}]]</span>
 			          <p style="margin-top:5px">[[${fvo.name}]]</p>
 			        </div>
 			      </a>
-			 </div>		
+			 </div>	
+			</div>	
        </div>
         
    </div>
