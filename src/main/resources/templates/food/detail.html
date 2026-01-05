@@ -74,27 +74,26 @@
           </tr>
           <tr>
            <td class="text-right">
-            <a href="#" class="btn btn-xs btn-primary">찜하기</a>
-            <a href="#" class="btn btn-xs btn-info">예약하기</a>
-            <a href="javascript:history.back()" class="btn btn-xs btn-warning">목록</a>
+            <a href="javascript:history.back()" class="btn btn-xs btn-default">목록</a>
            </td>
           </tr>
         </table>
       </div>
     <!-- 댓글 -->
     <div class="row aln-text" style="margin-top: 10px; width: 800px">
+    <h3 style="padding-left: 0">댓글</h3>
       <table class="table">
          <tr>
             <td>
                <table class="table" v-for="rvo in list">
-                  <tr>
-                     <td class="text-left" width="80%">
-                        ◑((rvo.name))&nbsp;((rvo.dbday))
+                  <tr style="background-color: #f5f5f5;">
+                     <td class="text-left" width="95%">
+                        ((rvo.name))&nbsp;&nbsp;&nbsp;((rvo.dbday))
                      </td>
-                     <td class="text-right" width="20%">
-                        <span v-if="sessionId===rvo.id">
-                           <button type=button class="btn btn-xs btn-warning upbtn" :id="'u'+rvo.no" @click="replyUpdateForm(rvo.no)">수정</button>
-                           <button type="button" class="btn btn-xs btn-info" @click="replyDelete(rvo.no)">삭제</button>
+                     <td class="text-right" width="5%">
+                        <span v-if="sessionId===rvo.id" style="display: flex">
+                           <button class="btn btn-xs upbtn" :id="'u'+rvo.no" @click="replyUpdateForm(rvo.no)" style="background-color: #f5f5f5; width: 30px">수정</button>
+                           <button class="btn btn-xs" @click="replyDelete(rvo.no)" style="background-color: #f5f5f5; width: 30px">삭제</button>
                         </span>
                      </td>
                   </tr>
@@ -108,8 +107,8 @@
                         <table class="table ups" style="display:none" :id="'up'+rvo.no">
                          <tr>
                           <td>
-                           <textarea rows="5" cols="70" style="float: left" :id="'umsg'+rvo.no">((rvo.msg))</textarea>
-                           <button type=button class="btn-primary" style="width: 100px;height: 99px;float: left" @click="replyUpdate(rvo.no)">댓글수정</button>
+                           <textarea style="float: left; width:500px; height:100px" :id="'umsg'+rvo.no">((rvo.msg))</textarea>
+                           <button type=button class="btn-primary" style="width: 80px;height: 100px;float: left; background-color: gray" @click="replyUpdate(rvo.no)">댓글수정</button>
                           </td>
                          </tr>
                       </table>
@@ -120,13 +119,19 @@
          </tr>
       </table>
       <table class="table" th:if="${session.id!=null}">
-       <tr>
-        <td>
-         <textarea rows="5" cols="70" style="float: left" v-model="msg" ref="msg" @keyup.enter="insert()"></textarea>
-         <button type=button class="btn-primary" style="width: 100px;height: 99px;float: left" @click="insert()">댓글쓰기</button>
-        </td>
-       </tr>
-      </table>
+		  <tr>
+		    <td style="border-top: none;">
+		      <textarea rows="4" cols="40"
+		        style="float:left; width:600px; height:100px"
+		        v-model="msg" ref="msg" @keyup.enter="insert()"></textarea>
+		
+		      <button type="button"
+		        class="btn-primary"
+		        style="float:left; width:80px; height:100px; margin-left:6px; background-color: gray"
+		        @click="insert()">댓글쓰기</button>
+		    </td>
+		  </tr>
+		</table>
     </div>
    </div>
    </div>

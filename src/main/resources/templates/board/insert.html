@@ -2,59 +2,82 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>글쓰기</title>
+<style>
+.main {
+  width: 800px;
+  margin: 50px auto;
+}
+.form-row {
+  margin-bottom: 14px;
+}
+.form-row label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+.form-row input,
+.form-row textarea {
+  width: 100%;
+  padding: 6px 8px;
+  box-sizing: border-box;
+}
+.form-actions {
+  text-align: center;
+  margin-top: 20px;
+}
+label {
+	color: black !important;
+}
+button {
+	background-color: gray;
+	color: white;
+}
+</style>
 </head>
+
 <body>
 <div id="main-wrapper">
-	<section class="wrapper style2">
-		<div class="container">
-			<header class="major">
-				<h3>글쓰기</h3>
-			</header>
-		</div>
-	</section>
-	<div class="container">
-			
-		<div class="row aln-center" style="margin-top: 20px;">
-		   
-      <form method="post" action="/board/insert_ok">
-      <table class="table">
-        <tbody>
-          <tr>
-            <td class="text-right" width=15%>이름</td>
-            <td width=85%>
-              <input type=text name=name size=20 class="input-sm" required>
-            </td>
-          </tr>
-          <tr>
-            <td class="text-right" width=15%>제목</td>
-            <td width=85%>
-              <input type=text name=subject size=60 class="input-sm" required>
-            </td>
-          </tr>
-          <tr>
-            <td class="text-right" width=15%>내용</td>
-            <td width=85%>
-              <textarea rows="10" cols="60" name="content" required></textarea>
-            </td>
-          </tr>
-          <tr>
-            <td class="text-right" width=15%>비밀번호</td>
-            <td width=85%>
-              <input type=password name=pwd size=10 class="input-sm" required>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2" class="text-center">
-              <button type="submit" class="btn-sm btn-primary">글쓰기</button>
-              <button type="button" class="btn-sm btn-primary" onclick="javascript:history.back()">취소</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      </form>
-		</div>
-	</div>
+
+  <section class="wrapper style2">
+    <div class="container">
+      <header class="major">
+        <h3>글쓰기</h3>
+      </header>
+    </div>
+  </section>
+
+  <div class="main">
+    <form method="post" action="/board/insert_ok">
+
+      <div class="form-row">
+        <label>이름</label>
+        <input type="text" name="name" style="width: 150px;" required>
+      </div>
+
+      <div class="form-row">
+        <label>제목</label>
+        <input type="text" name="subject" style="width: 400px;" required>
+      </div>
+
+      <div class="form-row">
+        <label>내용</label>
+        <textarea rows="10" name="content" required></textarea>
+      </div>
+
+      <div class="form-row">
+        <label>비밀번호</label>
+        <input type="password" name="pwd" style="width: 150px;" required>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn-sm">글쓰기</button>
+        <button type="button" class="btn-sm" onclick="history.back()">취소</button>
+      </div>
+
+    </form>
+  </div>
+
 </div>
 </body>
 </html>

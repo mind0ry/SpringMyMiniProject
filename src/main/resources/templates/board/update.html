@@ -2,66 +2,95 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>수정</title>
+<style>
+.main {
+  width: 800px;
+  margin: 50px auto;
+}
+.form-row {
+  margin-bottom: 14px;
+}
+.form-row label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: black;
+}
+.form-row input,
+.form-row textarea {
+  width: 100%;
+  padding: 6px 8px;
+  box-sizing: border-box;
+}
+.form-actions {
+  text-align: center;
+  margin-top: 20px;
+}
+button {
+  background-color: gray;
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  cursor: pointer;
+  margin-left: 8px;
+}
+label {
+	color:black !important;
+}
+</style>
 </head>
+
 <body>
 <div id="main-wrapper">
-	 <section class="wrapper style2">
-		<div class="container">
-			<header class="major">
-				<h3>수정</h3>
-			</header>
-		</div>
-	</section>
-	 <div class="container" style="margin-top:50px;">
-	
-	<div class="row aln-center">
-		 
-     <form method="post" action="/board/update_ok">
-     <table class="table" >
-      <tbody>
-        <tr>
-          <td class="text-right" width=15%>이름</td>
-          <td width=85%>
-           <input type=text name=name size=20 class="input-sm" required
-            th:value="${vo.name}"
-           >
-           <input type="hidden" name=no th:value="${vo.no}">
-          </td>
-        </tr>
-        <tr>
-          <td class="text-right" width=15%>제목</td>
-          <td width=85%>
-           <input type=text name=subject size=60 class="input-sm" required
-            th:value="${vo.subject}"
-           >
-          </td>
-        </tr>
-        <tr>
-          <td class="text-right" width=15%>내용</td>
-          <td width=85%>
-           <textarea rows="5" cols="60" name="content" required>[[${vo.content}]]</textarea>
-          </td>
-        </tr>
-        <tr>
-          <td class="text-right" width=15%>비밀번호</td>
-          <td width=85%>
-           <input type=password name=pwd size=10 class="input-sm" required>
-          </td>
-        </tr>
-        <tr>
-          <td colspan="2" class="text-center">
-           <button type="submit" class="btn-sm btn-primary">수정</button>
-           <button type="button" class="btn-sm btn-primary"
-            onclick="javascript:history.back()"
-           >취소</button>
-          </td>
-        </tr>
-      </tbody>
-     </table>
-     </form>
-		</div>
+
+  <section class="wrapper style2">
+    <div class="container">
+      <header class="major">
+        <h3>수정</h3>
+      </header>
     </div>
+  </section>
+
+  <div class="main">
+    <form method="post" action="/board/update_ok">
+
+      <!-- 이름 -->
+      <div class="form-row">
+        <label>이름</label>
+        <input type="text" name="name" style="width:150px"
+               th:value="${vo.name}" required>
+        <input type="hidden" name="no" th:value="${vo.no}">
+      </div>
+
+      <!-- 제목 -->
+      <div class="form-row">
+        <label>제목</label>
+        <input type="text" name="subject" style="width:400px"
+               th:value="${vo.subject}" required>
+      </div>
+
+      <!-- 내용 -->
+      <div class="form-row">
+        <label>내용</label>
+        <textarea rows="10" name="content" required>[[${vo.content}]]</textarea>
+      </div>
+
+      <!-- 비밀번호 -->
+      <div class="form-row">
+        <label>비밀번호</label>
+        <input type="password" name="pwd" style="width:150px" required>
+      </div>
+
+      <!-- 버튼 -->
+      <div class="form-actions">
+        <button type="submit">수정</button>
+        <button type="button" onclick="history.back()">취소</button>
+      </div>
+
+    </form>
+  </div>
+
 </div>
 </body>
 </html>
